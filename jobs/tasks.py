@@ -30,7 +30,7 @@ def check(a):
 
 @shared_task
 def send_gcm_notification(REG_ID_LIST=None,data=None):
-	result = trigger_gcm_request(REG_ID_LIST , data)  
+	result = trigger_gcm_request(API_KEY = None , REG_ID = [ REG_ID_LIST ] , data = data)  
 	# The method is configured to use default values.
 	# In prod, the above method would need arguments namely
 	# REG_ID , data 
