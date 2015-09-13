@@ -66,6 +66,8 @@ WSGI_APPLICATION = 'http_task_gateway.wsgi.application'
 
 
 DATABASES = {'default': dj_database_url.parse( 'mysql://root:root@192.168.43.149:3306/task_management' )}
+GCM_API_KEY = 'AIzaSyAGa2mz-Qw4izMSe9NRJ2dl4OKqHyQUY7c'
+
 '''
 DATABASES = {
     'default': {
