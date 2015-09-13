@@ -1,0 +1,10 @@
+python manage.py sqlall admin > sqls/admin.sql
+python manage.py sqlall auth > sqls/admin.sql
+python manage.py sqlall admin > sqls/admin.sql
+python manage.py sqlall auth > sqls/auth.sql
+python manage.py sqlall contenttypes > sqls/contenttypes.sql
+python manage.py sqlall sessions > sqls/sessions.sql
+python manage.py sqlall messages > sqls/messages.sql
+python manage.py sqlall staticfiles > sqls/staticfiles.sql
+python manage.py sqlall djcelery > sqls/djcelery.sql
+python manage.py sqlall jobs > sqls/djcelery.sql
