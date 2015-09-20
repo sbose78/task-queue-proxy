@@ -5,6 +5,7 @@ from celery.utils.log import get_task_logger
 logger = get_task_logger(__name__)
 
 from jobs.utils import trigger_gcm_request,run_sql
+from jobs import rules 
 
 ########### Sample tasks to test the framework ############################
 
@@ -29,8 +30,11 @@ def check(a):
 ############# Sample tasks end here, real tasks start here ################
 
 @shared_task
-def send_gcm_notification(REG_ID_LIST=None,data=None):
-	result = trigger_gcm_request(API_KEY = None , REG_ID = [ REG_ID_LIST ] , data = data)  
+def send_gcm_notification(REG_ID_LIST=None,_data=None):
+	import json
+
+
+	result = trigger_gcm_request(API_KEY = None , REG_ID = [ REG_ID_LIST ] , data = _data)  
 	# The method is configured to use default values.
 	# In prod, the above method would need arguments namely
 	# REG_ID , data 
@@ -40,7 +44,26 @@ def send_gcm_notification(REG_ID_LIST=None,data=None):
 		print "will take out erroneous GCM IDs and execute again for the failed transactions"
 		# Queue up more tasks.
 
+	print "Successfuly sent out notif"
 	return result	
+
+@shared_task
+def send_email( subject , body , to , sender ) :
+	return True
+
+
+@shared_task
+def validate_policy( policy ):
+	result,reason = rules.validate_policy( policy ) 
+	return { "result": result , "error" : reason }
+
+
+@shared_task
+def execute_policy( policy ):
+	response = {}
+	response["result"] = {}
+	
+	
 
 
 '''
@@ -69,7 +92,7 @@ def task_completed_handler(sender=None, **kwds ): #task_id=None ,  task=None, ar
          print "%s = %s" % (k, v)
 	 result_dict[k] = v
 
-    sql = 'INSERT INTO `task_management`.`task_status` (`task_name`, `input`, `output`, `celery_task_id` , `type` ) VALUES ("daily_recommendation", "%s", "%s", "%s","%s");'%(result_dict['args'], result_dict['retval'], result_dict['task_id'] , sender.name)
+    sql = 'INSERT INTO `task_status` (`task_name`, `input`, `output`, `celery_task_id` , `type` ) VALUES ("daily_recommendation", "%s", "%s", "%s","%s");'%(result_dict['args'], result_dict['retval'], result_dict['task_id'] , sender.name)
     run_sql(sql)  
 
     print "End of task, exeuting %s for task logging"%(sql)

@@ -29,7 +29,8 @@ def trigger_gcm_request( API_KEY=None , REG_ID=None , data=None ) :
 	
 	print "API KEY : %s , DATA : %s , REG_ID %s "%( API_KEY , data , REG_ID )
 
-	response = gcm.json_request( REG_ID  , data=data)
+	response = gcm.json_request( REG_ID    , data=data)
+
 	return response
 
 
