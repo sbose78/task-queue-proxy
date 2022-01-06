@@ -13,7 +13,7 @@ backports.ssl-match-hostname==3.4.0.2
 billiard==3.3.0.13
 cabot==0.0.0-dev
 carbon==0.9.12
-celery==3.1.7
+celery==5.2.2
 certifi==1.0.1
 chardet==2.0.1
 collectd==1.0.2
