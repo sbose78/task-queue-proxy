@@ -33,7 +33,7 @@ gevent==1.0.1
 greenlet==0.4.7
 gunicorn==18.0
 hiredis==0.1.1
-html5lib==0.999
+html5lib==0.999999999
 httplib2==0.7.7
 icalendar==3.6.1
 irc==8.5.4
