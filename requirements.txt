@@ -27,7 +27,7 @@ django-polymorphic==0.5.6
 django-redis==1.4.5
 django-smtp-ssl==1.0
 django-tagging==0.3.1
-flower==0.8.3
+flower==1.2.0
 futures==3.0.3
 gevent==1.0.1
 greenlet==0.4.7
