@@ -14,7 +14,7 @@ billiard==3.3.0.13
 cabot==0.0.0-dev
 carbon==0.9.12
 celery==3.1.7
-certifi==1.0.1
+certifi==2022.12.7
 chardet==2.0.1
 collectd==1.0.2
 colorama==0.2.5
